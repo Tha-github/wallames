@@ -1,0 +1,778 @@
+/* ===========================
+   VARIÁVEIS GLOBAIS
+=========================== */
+:root {
+  --preto:      #0b0b0b;
+  --preto-2:    #121212;
+  --ouro:       #c9a227;
+  --ouro-claro: #e8c96a;
+  --vermelho:   #b21620;
+  --amarelo:    #f2b705;
+  --branco:     #ffffff;
+  --cinza:      #b8b3a8;
+
+  --fonte-titulo: 'Cormorant Garamond', serif;
+  --fonte-corpo:  'Montserrat', sans-serif;
+}
+
+/* ===========================
+   RESET BÁSICO
+=========================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--preto);
+  color: var(--cinza);
+  font-family: var(--fonte-corpo);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+.container {
+  width: min(1140px, 90%);
+  margin-inline: auto;
+}
+
+/* ===========================
+   BOTÕES
+=========================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  font-family: var(--fonte-corpo);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border-radius: 2px;
+  transition: filter 0.25s ease, transform 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+/* Botão dourado — fundo dourado, texto preto */
+.btn-ouro {
+  background-color: var(--ouro);
+  color: var(--preto);
+  border: 2px solid var(--ouro);
+}
+
+.btn-ouro:hover {
+  background-color: var(--ouro-claro);
+  border-color: var(--ouro-claro);
+}
+
+/* Botão vazado — transparente com borda dourada */
+.btn-vazado {
+  background-color: transparent;
+  color: var(--ouro);
+  border: 2px solid var(--ouro);
+}
+
+.btn-vazado:hover {
+  background-color: var(--ouro);
+  color: var(--preto);
+}
+
+/* ===========================
+   REVEAL (animação por scroll)
+=========================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   BANNER
+=========================== */
+#banner {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-image: url('img/banner.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Overlay escuro sobre a imagem de fundo */
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 11, 11, 0.65) 0%,
+    rgba(11, 11, 11, 0.88) 100%
+  );
+  z-index: 1;
+}
+
+/* Área central com as palavras e assinatura */
+.banner-centro {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Wrapper com altura fixa para as palavras sobrepostas */
+.banner-palavras-wrapper {
+  position: relative;
+  width: 100%;
+  height: clamp(4rem, 14vw, 11rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cada palavra: invisível por padrão, posicionada sobre as demais */
+.banner-palavra {
+  position: absolute;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(3.2rem, 11vw, 10rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  white-space: nowrap;
+
+  /* Gradiente dourado no texto */
+  background: linear-gradient(
+    135deg,
+    var(--ouro)       0%,
+    var(--ouro-claro) 45%,
+    var(--ouro)       100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  /* Estado inicial: invisível, borrado, deslocado para baixo */
+  opacity: 0;
+  filter: blur(14px);
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, filter 0.7s ease, transform 0.7s ease;
+}
+
+/* Estado visível (entrada) */
+.banner-palavra.entrada {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* Estado de saída (sai para cima, com blur) */
+.banner-palavra.saida {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(-22px);
+  transition: opacity 0.45s ease, filter 0.45s ease, transform 0.45s ease;
+}
+
+/* Assinatura: linha dourada + texto — aparece após as palavras */
+.banner-assinatura {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.banner-assinatura.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Linha fina dourada */
+.banner-linha {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--ouro), transparent);
+}
+
+/* Texto "Eu Amo Pastel • Frutal" */
+.banner-sub {
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+}
+
+/* Seta de scroll animada no rodapé */
+.banner-seta {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Cada chevron da seta */
+.banner-seta span {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid var(--ouro);
+  border-bottom: 2px solid var(--ouro);
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: seta-descer 1.6s ease-in-out infinite;
+}
+
+.banner-seta span:nth-child(1) { animation-delay: 0s; }
+.banner-seta span:nth-child(2) { animation-delay: 0.22s; }
+.banner-seta span:nth-child(3) { animation-delay: 0.44s; }
+
+@keyframes seta-descer {
+  0%   { opacity: 0;   transform: rotate(45deg) translate(-5px, -5px); }
+  40%  { opacity: 0.9; }
+  100% { opacity: 0;   transform: rotate(45deg) translate(5px, 5px); }
+}
+
+/* ===========================
+   CABEÇALHO DE SEÇÃO (padrão global)
+=========================== */
+.secao-sobretitulo {
+  display: block;
+  font-family: var(--fonte-corpo);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--ouro);
+  margin-bottom: 1rem;
+}
+
+.secao-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--branco);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.secao-divisor {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--ouro), transparent);
+  margin: 0 auto;
+}
+
+/* ===========================
+   SOBRE
+=========================== */
+#sobre {
+  padding: 7rem 0;
+  background-color: var(--preto-2);
+}
+
+.sobre-cabecalho {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+/* Parágrafos institucionais */
+.sobre-texto {
+  max-width: 760px;
+  margin: 0 auto 4.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.sobre-texto p {
+  font-size: clamp(0.88rem, 1.5vw, 1rem);
+  font-weight: 300;
+  color: var(--cinza);
+  line-height: 1.9;
+}
+
+.sobre-texto strong {
+  color: var(--ouro-claro);
+  font-weight: 600;
+}
+
+.sobre-texto em {
+  color: var(--branco);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Destaques separados por linha dourada acima */
+.sobre-destaques {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(201, 162, 39, 0.45);
+  padding-top: 2.75rem;
+  margin-bottom: 4rem;
+}
+
+.sobre-destaque {
+  flex: 1;
+  text-align: center;
+  padding: 0 1.5rem;
+  position: relative;
+}
+
+/* Separador vertical entre destaques */
+.sobre-destaque:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 1.6rem;
+  background-color: var(--ouro);
+  opacity: 0.4;
+}
+
+.destaque-texto {
+  font-family: var(--fonte-corpo);
+  font-size: clamp(0.62rem, 1.2vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+}
+
+/* Botões centralizados */
+.sobre-botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* ===========================
+   SOBRE — RESPONSIVO
+=========================== */
+@media (max-width: 600px) {
+  #sobre {
+    padding: 5rem 0;
+  }
+
+  .sobre-destaques {
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  .sobre-destaque::after {
+    display: none;
+  }
+
+  .sobre-destaque {
+    padding: 0;
+  }
+}
+
+/* ===========================
+   CARDÁPIO
+=========================== */
+#cardapio {
+  /* Levemente mais claro que --preto-2 (#121212) para contrastar com as seções vizinhas */
+  background-color: #1a1a1a;
+  padding: 7rem 0;
+}
+
+.cardapio-cabecalho {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+/* Grid responsivo: mínimo 230px por coluna */
+.cardapio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 4rem;
+}
+
+/* Card de produto */
+.card-produto {
+  background-color: var(--preto-2);
+  border: 1px solid rgba(201, 162, 39, 0.22);
+  border-radius: 6px;
+  padding: 2.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover: eleva o card e destaca a borda dourada */
+.card-produto:hover {
+  transform: translateY(-8px);
+  border-color: var(--ouro);
+  box-shadow: 0 14px 36px rgba(201, 162, 39, 0.13);
+}
+
+/* Ícone redondo com borda dourada e respiro interno */
+.card-icone {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  border: 2px solid var(--ouro);
+  padding: 6px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.card-icone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Título na fonte serifada */
+.card-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.3rem, 2.5vw, 1.65rem);
+  font-weight: 600;
+  color: var(--branco);
+  line-height: 1.2;
+}
+
+/* Descrição curta */
+.card-descricao {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--cinza);
+  line-height: 1.7;
+}
+
+/* Botões abaixo do grid */
+.cardapio-botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* ===========================
+   CARDÁPIO — RESPONSIVO
+=========================== */
+@media (max-width: 600px) {
+  #cardapio {
+    padding: 5rem 0;
+  }
+}
+
+/* ===========================
+   RESERVA
+=========================== */
+#reserva {
+  background-color: var(--preto-2);
+  padding: 7rem 0;
+}
+
+.reserva-cabecalho {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+/* Formulário centralizado com borda dourada sutil */
+.reserva-form {
+  max-width: 620px;
+  margin: 0 auto;
+  background-color: var(--preto);
+  border: 1px solid rgba(201, 162, 39, 0.28);
+  border-radius: 6px;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Grupo campo: empilha label + input + mensagem de erro */
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Label pequena em dourado, caixa alta, espaçamento amplo */
+.campo-label {
+  font-family: var(--fonte-corpo);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ouro);
+  cursor: text;
+}
+
+/* Input com apenas borda inferior */
+.campo-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(184, 179, 168, 0.35);
+  border-radius: 0;
+  padding: 0.6rem 0;
+  font-family: var(--fonte-corpo);
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--branco);
+  width: 100%;
+  cursor: text;
+  transition: border-color 0.25s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Borda inferior dourada no foco */
+.campo-input:focus {
+  border-bottom-color: var(--ouro);
+  outline: none;
+}
+
+/* Placeholder discreto */
+.campo-input::placeholder {
+  color: rgba(184, 179, 168, 0.4);
+  font-weight: 300;
+}
+
+/* Forçar esquema escuro nos pickers de data e hora */
+.campo-input[type="date"],
+.campo-input[type="time"] {
+  color-scheme: dark;
+}
+
+/* Mensagem de erro discreta em vermelho abaixo do campo */
+.campo-erro {
+  display: block;
+  font-family: var(--fonte-corpo);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--vermelho);
+  letter-spacing: 0.02em;
+  min-height: 1rem;
+}
+
+/* Botão ocupa 100% da largura do formulário */
+.reserva-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* ===========================
+   RESERVA — RESPONSIVO
+=========================== */
+@media (max-width: 600px) {
+  #reserva {
+    padding: 5rem 0;
+  }
+
+  .reserva-form {
+    padding: 2rem 1.25rem;
+  }
+}
+
+/* ===========================
+   REDES SOCIAIS
+=========================== */
+#redes-sociais {
+  background-color: var(--preto);
+  padding: 7rem 0;
+  border-top: 1px solid rgba(201, 162, 39, 0.18);
+}
+
+.redes-cabecalho {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.redes-icones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Ícone circular com borda dourada */
+.rede-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--ouro);
+  color: var(--ouro);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.rede-link:hover {
+  background-color: var(--ouro);
+  color: var(--preto);
+  transform: translateY(-4px);
+}
+
+.rede-link svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ===========================
+   REDES SOCIAIS — RESPONSIVO
+=========================== */
+@media (max-width: 600px) {
+  #redes-sociais {
+    padding: 5rem 0;
+  }
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  background-color: var(--preto);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(201, 162, 39, 0.15);
+}
+
+.footer-texto {
+  font-family: var(--fonte-corpo);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(184, 179, 168, 0.55);
+  line-height: 1.6;
+}
+
+/* ===========================
+   BOTÃO FLUTUANTE WHATSAPP
+=========================== */
+.btn-flutuante-whatsapp {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: var(--vermelho);
+  color: var(--branco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(178, 22, 32, 0.5);
+  transition: background-color 0.3s ease, color 0.3s ease,
+              transform 0.25s ease, box-shadow 0.3s ease;
+}
+
+.btn-flutuante-whatsapp:hover {
+  background-color: var(--ouro);
+  color: var(--preto);
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(201, 162, 39, 0.45);
+}
+
+.btn-flutuante-whatsapp svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ===========================
+   BOTÃO FLUTUANTE — RESPONSIVO
+=========================== */
+@media (max-width: 600px) {
+  .btn-flutuante-whatsapp {
+    width: 52px;
+    height: 52px;
+    bottom: 1.5rem;
+    right: 1.25rem;
+  }
+
+  .btn-flutuante-whatsapp svg {
+    width: 24px;
+    height: 24px;
+  }
+}

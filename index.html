@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Eu Amo Pastel — Pastelaria artesanal com os melhores pastéis da cidade. Recheios irresistíveis, massa crocante e muito sabor. Peça pelo WhatsApp ou visite-nos!" />
+  <meta name="keywords" content="pastelaria, pastel, pastel artesanal, pastel crocante, melhor pastel, Eu Amo Pastel" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Eu Amo Pastel — Pastelaria Artesanal" />
+  <meta property="og:description" content="Pastéis artesanais com massa crocante e recheios irresistíveis. Peça agora pelo WhatsApp!" />
+  <meta property="og:image" content="img/og-cover.jpg" />
+
+  <title>Eu Amo Pastel — Pastelaria Artesanal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== BANNER ===================== -->
+  <header id="banner">
+
+    <div class="banner-overlay"></div>
+
+    <div class="banner-centro container">
+
+      <!-- Palavras animadas sequencialmente (controladas pelo script.js) -->
+      <div class="banner-palavras-wrapper">
+        <h1 class="banner-titulo banner-palavra" id="palavra-1">O MELHOR</h1>
+        <h1 class="banner-titulo banner-palavra" id="palavra-2">PASTEL</h1>
+        <h1 class="banner-titulo banner-palavra" id="palavra-3">DO MUNDO</h1>
+      </div>
+
+      <!-- Linha + assinatura — aparecem após as três palavras -->
+      <div class="banner-assinatura" id="banner-assinatura">
+        <div class="banner-linha"></div>
+        <p class="banner-sub">Eu Amo Pastel &bull; Frutal</p>
+      </div>
+
+    </div>
+
+    <!-- Seta de scroll animada no rodapé do banner -->
+    <div class="banner-seta" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </header>
+  <!-- =================== FIM BANNER =================== -->
+
+  <!-- ===================== SOBRE ===================== -->
+  <section id="sobre">
+    <div class="container">
+
+      <!-- Cabeçalho da seção -->
+      <div class="sobre-cabecalho reveal">
+        <span class="secao-sobretitulo">Nossa História</span>
+        <h2 class="secao-titulo">Tradição que se sente<br>no primeiro mordido</h2>
+        <div class="secao-divisor"></div>
+      </div>
+
+      <!-- Parágrafos institucionais -->
+      <div class="sobre-texto reveal">
+        <p>Nascida em Frutal/MG, a <strong>Eu Amo Pastel</strong> foi criada com um único propósito: oferecer o melhor pastel do mundo e a batata mais famosa do Brasil. Cada item do nosso cardápio — do pastel crocante à batata recheada irresistível, do açaí cremoso aos sucos finos, do refrigerante gelado ao caldo de cana gourmetizado — é preparado com ingredientes frescos e muito capricho, no momento em que você pede.</p>
+        <p>Nossa tradição está nos detalhes: a massa trabalhada com cuidado, o recheio generoso, o ponto exato de fritura. Cada pedido sai direto da nossa cozinha para a sua mão, garantindo sabor, crocância e qualidade incomparáveis. É por isso que nos tornamos referência em Frutal — e é por isso que nossos clientes simplesmente <em>Amam Pastel</em>.</p>
+      </div>
+
+      <!-- 3 destaques lado a lado com linha dourada acima -->
+      <div class="sobre-destaques reveal">
+        <div class="sobre-destaque">
+          <span class="destaque-texto">100% Feito na hora</span>
+        </div>
+        <div class="sobre-destaque">
+          <span class="destaque-texto">N&ordm;&nbsp;1 Batata do Brasil</span>
+        </div>
+        <div class="sobre-destaque">
+          <span class="destaque-texto">&#9733;&#9733;&#9733;&#9733;&#9733; Aprovado pelos clientes</span>
+        </div>
+      </div>
+
+      <!-- Botões centralizados -->
+      <div class="sobre-botoes reveal">
+        <a href="#reserva" class="btn btn-ouro">Reservar Mesa</a>
+        <a href="#" class="btn btn-vazado" id="btn-delivery-sobre">Delivery</a>
+      </div>
+
+    </div>
+  </section>
+  <!-- =================== FIM SOBRE =================== -->
+
+  <!-- ===================== CARDÁPIO ===================== -->
+  <section id="cardapio">
+    <div class="container">
+
+      <!-- Cabeçalho da seção -->
+      <div class="cardapio-cabecalho reveal">
+        <span class="secao-sobretitulo">Nosso Menu</span>
+        <h2 class="secao-titulo">O melhor pastel do mundo,<br>a batata mais famosa do Brasil</h2>
+        <div class="secao-divisor"></div>
+      </div>
+
+      <!-- Grid responsivo de cards de produtos -->
+      <div class="cardapio-grid reveal">
+
+        <!-- Card: Pastel -->
+        <div class="card-produto">
+          <!-- TROQUE AQUI: substitua 'img/pastel.jpg' pela foto real do pastel -->
+          <div class="card-icone">
+            <img src="img/pastel.jpg" alt="Pastel" />
+          </div>
+          <h3 class="card-titulo">Pastel</h3>
+          <p class="card-descricao">Massa crocante com recheios irresistíveis, feito na hora.</p>
+        </div>
+
+        <!-- Card: Batata Recheada -->
+        <div class="card-produto">
+          <!-- TROQUE AQUI: substitua 'img/batata.jpg' pela foto real da batata recheada -->
+          <div class="card-icone">
+            <img src="img/batata.jpg" alt="Batata Recheada" />
+          </div>
+          <h3 class="card-titulo">Batata Recheada</h3>
+          <p class="card-descricao">A batata mais famosa do Brasil, recheada com muito sabor.</p>
+        </div>
+
+        <!-- Card: Açaí -->
+        <div class="card-produto">
+          <!-- TROQUE AQUI: substitua 'img/acai.jpg' pela foto real do açaí -->
+          <div class="card-icone">
+            <img src="img/acai.jpg" alt="Açaí" />
+          </div>
+          <h3 class="card-titulo">Açaí</h3>
+          <p class="card-descricao">Cremoso, gelado e cheio de energia para qualquer momento.</p>
+        </div>
+
+        <!-- Card: Sucos Finos -->
+        <div class="card-produto">
+          <!-- TROQUE AQUI: substitua 'img/suco.jpg' pela foto real dos sucos -->
+          <div class="card-icone">
+            <img src="img/suco.jpg" alt="Sucos Finos" />
+          </div>
+          <h3 class="card-titulo">Sucos Finos</h3>
+          <p class="card-descricao">Frutas selecionadas, sem corantes, com sabor natural e refinado.</p>
+        </div>
+
+        <!-- Card: Refrigerante -->
+        <div class="card-produto">
+          <!-- TROQUE AQUI: substitua 'img/refrigerante.jpg' pela foto real do refrigerante -->
+          <div class="card-icone">
+            <img src="img/refrigerante.jpg" alt="Refrigerante" />
+          </div>
+          <h3 class="card-titulo">Refrigerante</h3>
+          <p class="card-descricao">Gelado e refrescante para acompanhar cada mordida.</p>
+        </div>
+
+        <!-- Card: Caldo de Cana Gourmetizado -->
+        <div class="card-produto">
+          <!-- TROQUE AQUI: substitua 'img/caldo-cana.jpg' pela foto real do caldo de cana -->
+          <div class="card-icone">
+            <img src="img/caldo-cana.jpg" alt="Caldo de Cana Gourmetizado" />
+          </div>
+          <h3 class="card-titulo">Caldo de Cana Gourmetizado</h3>
+          <p class="card-descricao">Fresco e artesanal, com toque especial que faz a diferença.</p>
+        </div>
+
+      </div><!-- fim .cardapio-grid -->
+
+      <!-- Botões centralizados abaixo do grid -->
+      <div class="cardapio-botoes reveal">
+        <a href="#reserva" class="btn btn-ouro">Reservar Mesa</a>
+        <a href="#" class="btn btn-vazado" id="btn-delivery-cardapio">Delivery</a>
+      </div>
+
+    </div>
+  </section>
+  <!-- =================== FIM CARDÁPIO =================== -->
+
+  <!-- ===================== RESERVA ===================== -->
+  <section id="reserva">
+    <div class="container">
+
+      <!-- Cabeçalho da seção -->
+      <div class="reserva-cabecalho reveal">
+        <span class="secao-sobretitulo">Faça sua Reserva</span>
+        <h2 class="secao-titulo">Reserve sua mesa<br>com antecedência</h2>
+        <div class="secao-divisor"></div>
+      </div>
+
+      <!-- Formulário centralizado -->
+      <form class="reserva-form reveal" id="form-reserva" novalidate>
+
+        <!-- Nome completo -->
+        <div class="campo-grupo">
+          <label class="campo-label" for="reserva-nome">Nome Completo</label>
+          <input
+            class="campo-input"
+            type="text"
+            id="reserva-nome"
+            name="nome"
+            placeholder="Seu nome completo"
+            required
+            autocomplete="name"
+          />
+          <span class="campo-erro" id="erro-nome"></span>
+        </div>
+
+        <!-- Telefone / WhatsApp -->
+        <div class="campo-grupo">
+          <label class="campo-label" for="reserva-telefone">Telefone / WhatsApp</label>
+          <input
+            class="campo-input"
+            type="tel"
+            id="reserva-telefone"
+            name="telefone"
+            placeholder="(00) 00000-0000"
+            inputmode="numeric"
+            required
+            autocomplete="tel"
+            maxlength="15"
+          />
+          <span class="campo-erro" id="erro-telefone"></span>
+        </div>
+
+        <!-- Data -->
+        <div class="campo-grupo">
+          <label class="campo-label" for="reserva-data">Data</label>
+          <input
+            class="campo-input"
+            type="date"
+            id="reserva-data"
+            name="data"
+            required
+          />
+          <span class="campo-erro" id="erro-data"></span>
+        </div>
+
+        <!-- Horário -->
+        <div class="campo-grupo">
+          <label class="campo-label" for="reserva-horario">Horário</label>
+          <input
+            class="campo-input"
+            type="time"
+            id="reserva-horario"
+            name="horario"
+            required
+          />
+          <span class="campo-erro" id="erro-horario"></span>
+        </div>
+
+        <!-- Botão 100% largura -->
+        <button class="btn btn-ouro reserva-btn" type="submit">Reservar Mesa</button>
+
+      </form>
+
+    </div>
+  </section>
+  <!-- =================== FIM RESERVA =================== -->
+
+  <!-- ===================== REDES SOCIAIS ===================== -->
+  <section id="redes-sociais">
+    <div class="container">
+
+      <div class="redes-cabecalho reveal">
+        <span class="secao-sobretitulo">Siga-nos</span>
+        <h2 class="secao-titulo">Nos acompanhe<br>nas redes sociais</h2>
+        <div class="secao-divisor"></div>
+      </div>
+
+      <div class="redes-icones reveal">
+
+        <!-- Instagram -->
+        <a
+          href="https://www.instagram.com/euamopastel.frutal"
+          class="rede-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram Eu Amo Pastel"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+          </svg>
+        </a>
+
+        <!-- WhatsApp (href configurado pelo script.js) -->
+        <a
+          href="#"
+          class="rede-link"
+          id="btn-whatsapp-rede"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp Eu Amo Pastel"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- =================== FIM REDES SOCIAIS =================== -->
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <p class="footer-texto">© 2026 Eu Amo Pastel &mdash; Todos os direitos reservados. Site desenvolvido por Top Site</p>
+  </footer>
+  <!-- =================== FIM FOOTER =================== -->
+
+  <!-- Botão flutuante fixo de WhatsApp (href via script.js) -->
+  <a
+    href="#"
+    class="btn-flutuante-whatsapp"
+    id="btn-flutuante-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Fale conosco pelo WhatsApp"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
