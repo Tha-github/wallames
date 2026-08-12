@@ -237,37 +237,24 @@ textarea {
   transition: opacity 0.45s ease, filter 0.45s ease, transform 0.45s ease;
 }
 
-/* Assinatura: linha dourada + texto — aparece após as palavras */
-.banner-assinatura {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+/* Logo da marca — surge no mesmo lugar das palavras, com a mesma animação */
+.banner-logo {
+  position: absolute;
+  width: clamp(140px, 30vw, 220px);
+  height: auto;
+
+  /* Estado inicial: invisível, borrado, deslocado para baixo */
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  filter: blur(14px);
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, filter 0.7s ease, transform 0.7s ease;
 }
 
-.banner-assinatura.visivel {
+/* Estado visível (entrada) */
+.banner-logo.entrada {
   opacity: 1;
+  filter: blur(0);
   transform: translateY(0);
-}
-
-/* Linha fina dourada */
-.banner-linha {
-  width: 100px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--ouro), transparent);
-}
-
-/* Texto "Eu Amo Pastel • Frutal" */
-.banner-sub {
-  font-family: var(--fonte-corpo);
-  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-  font-weight: 500;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--ouro-claro);
 }
 
 /* Seta de scroll animada no rodapé */

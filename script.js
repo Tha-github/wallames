@@ -10,7 +10,7 @@ const WHATSAPP = "5534999999999"; // ALTERAR AQUI
 (function iniciarBanner() {
 
   const palavras    = ['palavra-1', 'palavra-2', 'palavra-3'].map(id => document.getElementById(id));
-  const assinatura  = document.getElementById('banner-assinatura');
+  const logo        = document.getElementById('banner-logo');
   const proximaSecao = document.getElementById('sobre');
 
   /* Flag para cancelar o scroll automático */
@@ -63,8 +63,8 @@ const WHATSAPP = "5534999999999"; // ALTERAR AQUI
       await esperar(PAUSA_ENTRE);
     }
 
-    /* Exibe a assinatura (linha + "Eu Amo Pastel • Frutal") */
-    if (assinatura) assinatura.classList.add('visivel');
+    /* Exibe o logo, com a mesma animação de entrada das palavras */
+    if (logo) mostrar(logo);
 
     /* Aguarda um instante e rola até a próxima seção (se não cancelado) */
     await esperar(2800);
