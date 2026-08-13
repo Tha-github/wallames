@@ -531,112 +531,42 @@ textarea {
 }
 
 /* ===========================
-   RESERVA
+   FRANQUIA
 =========================== */
-#reserva {
+#franquia {
   background-color: var(--preto-2);
   padding: 7rem 0;
 }
 
-.reserva-cabecalho {
+.franquia-cabecalho {
   text-align: center;
   margin-bottom: 3.5rem;
 }
 
-/* Formulário centralizado com borda dourada sutil */
-.reserva-form {
+/* Chamada para ação centralizada */
+.franquia-cta {
   max-width: 620px;
   margin: 0 auto;
-  background-color: var(--preto);
-  border: 1px solid rgba(201, 162, 39, 0.28);
-  border-radius: 6px;
-  padding: 3rem 2.5rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
 }
 
-/* Grupo campo: empilha label + input + mensagem de erro */
-.campo-grupo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-/* Label pequena em dourado, caixa alta, espaçamento amplo */
-.campo-label {
-  font-family: var(--fonte-corpo);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--ouro);
-  cursor: text;
-}
-
-/* Input com apenas borda inferior */
-.campo-input {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(184, 179, 168, 0.35);
-  border-radius: 0;
-  padding: 0.6rem 0;
-  font-family: var(--fonte-corpo);
-  font-size: 0.92rem;
+.franquia-texto {
+  font-size: clamp(0.88rem, 1.5vw, 1rem);
   font-weight: 300;
-  color: var(--branco);
-  width: 100%;
-  cursor: text;
-  transition: border-color 0.25s ease;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-/* Borda inferior dourada no foco */
-.campo-input:focus {
-  border-bottom-color: var(--ouro);
-  outline: none;
-}
-
-/* Placeholder discreto */
-.campo-input::placeholder {
-  color: rgba(184, 179, 168, 0.4);
-  font-weight: 300;
-}
-
-/* Forçar esquema escuro nos pickers de data e hora */
-.campo-input[type="date"],
-.campo-input[type="time"] {
-  color-scheme: dark;
-}
-
-/* Mensagem de erro discreta em vermelho abaixo do campo */
-.campo-erro {
-  display: block;
-  font-family: var(--fonte-corpo);
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--vermelho);
-  letter-spacing: 0.02em;
-  min-height: 1rem;
-}
-
-/* Botão ocupa 100% da largura do formulário */
-.reserva-btn {
-  width: 100%;
-  margin-top: 0.5rem;
+  color: var(--cinza);
+  line-height: 1.9;
 }
 
 /* ===========================
-   RESERVA — RESPONSIVO
+   FRANQUIA — RESPONSIVO
 =========================== */
 @media (max-width: 600px) {
-  #reserva {
+  #franquia {
     padding: 5rem 0;
-  }
-
-  .reserva-form {
-    padding: 2rem 1.25rem;
   }
 }
 

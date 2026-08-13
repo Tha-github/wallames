@@ -46,8 +46,8 @@ Variáveis em `:root`:
 `.container` (min(1140px, 90%), centralizado) · `.btn` · `.btn-ouro` (fundo dourado, texto preto) · `.btn-vazado` (transparente com borda dourada) · `.reveal` / `.visivel` (animação por scroll).
 
 ## Constantes
-No topo do `script.js`: `const WHATSAPP = "5534999999999"; // ALTERAR AQUI`
-Todos os links de WhatsApp (delivery, formulário, botão flutuante, redes sociais) usam essa constante.
+No topo do `script.js`: `const WHATSAPP = "5534991973508"; // ALTERAR AQUI`
+Todos os links de WhatsApp (delivery, franquia, botão flutuante, redes sociais) usam essa constante.
 
 ## Produtos
 Pastel · Batata Recheada · Açaí · Sucos Finos · Refrigerante · Caldo de Cana Gourmetizado
@@ -56,7 +56,7 @@ Pastel · Batata Recheada · Açaí · Sucos Finos · Refrigerante · Caldo de C
 Instagram: https://www.instagram.com/euamopastel.frutal
 
 ## Botões padrão
-**[RESERVAR MESA]** → âncora `#reserva` · **[DELIVERY]** → link do WhatsApp
+**[SEJA FRANQUEADO]** → âncora `#franquia` · **[DELIVERY]** → link do WhatsApp
 
 ## Footer (texto exato)
 `© 2026 Eu Amo Pastel — Todos os direitos reservados. Site desenvolvido por Top Site`
@@ -65,7 +65,7 @@ Instagram: https://www.instagram.com/euamopastel.frutal
 1. Banner (`#banner`)
 2. Sobre (`#sobre`)
 3. Cardápio (`#cardapio`)
-4. Reserva (`#reserva`)
+4. Franquia (`#franquia`) — CTA "Venha ser um franqueado da receita de pastelaria que mais cresce!", redireciona para o WhatsApp
 5. Redes sociais
 6. Footer
 
@@ -74,5 +74,5 @@ Instagram: https://www.instagram.com/euamopastel.frutal
 - [ ] Etapa 2 — Banner com animação
 - [ ] Etapa 3 — Seção Sobre
 - [ ] Etapa 4 — Cardápio
-- [ ] Etapa 5 — Formulário de reserva
+- [ ] Etapa 5 — CTA de franquia
 - [ ] Etapa 6 — Redes sociais, footer e ajustes finais

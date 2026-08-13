@@ -1,4 +1,4 @@
-const WHATSAPP = "5534999999999"; // ALTERAR AQUI
+const WHATSAPP = "5534991973508"; // ALTERAR AQUI
 
 /* =============================================
    BANNER — ANIMAÇÃO SEQUENCIAL DE PALAVRAS
@@ -105,117 +105,7 @@ const WHATSAPP = "5534999999999"; // ALTERAR AQUI
 })();
 
 /* =============================================
-   RESERVA — Formulário de reserva de mesa
-   - Define data mínima como hoje (bloqueia passado)
-   - Máscara automática no telefone: (00) 00000-0000
-   - Valida todos os campos; erros em vermelho abaixo
-   - Se válido: abre WhatsApp com mensagem pré-preenchida
-============================================= */
-(function iniciarFormReserva() {
-
-  var form      = document.getElementById('form-reserva');
-  var inputNome = document.getElementById('reserva-nome');
-  var inputTel  = document.getElementById('reserva-telefone');
-  var inputData = document.getElementById('reserva-data');
-  var inputHora = document.getElementById('reserva-horario');
-
-  if (!form) return;
-
-  /* Data mínima = hoje (impede datas passadas) */
-  var hoje = new Date();
-  var aaaa  = hoje.getFullYear();
-  var mm    = String(hoje.getMonth() + 1).padStart(2, '0');
-  var dd    = String(hoje.getDate()).padStart(2, '0');
-  inputData.min = aaaa + '-' + mm + '-' + dd;
-
-  /* --- Máscara de telefone: (00) 00000-0000 --- */
-  inputTel.addEventListener('input', function () {
-    var digitos = this.value.replace(/\D/g, '');
-    if (digitos.length > 11) digitos = digitos.slice(0, 11);
-
-    var mascarado = '';
-    if (digitos.length === 0) {
-      mascarado = '';
-    } else if (digitos.length <= 2) {
-      mascarado = '(' + digitos;
-    } else if (digitos.length <= 7) {
-      mascarado = '(' + digitos.slice(0, 2) + ') ' + digitos.slice(2);
-    } else {
-      mascarado = '(' + digitos.slice(0, 2) + ') ' + digitos.slice(2, 7) + '-' + digitos.slice(7);
-    }
-    this.value = mascarado;
-  });
-
-  /* --- Helpers de erro --- */
-  function mostrarErro(idErro, mensagem) {
-    var span = document.getElementById(idErro);
-    if (span) span.textContent = mensagem;
-  }
-
-  function limparErros() {
-    ['erro-nome', 'erro-telefone', 'erro-data', 'erro-horario'].forEach(function (id) {
-      var span = document.getElementById(id);
-      if (span) span.textContent = '';
-    });
-  }
-
-  /* --- Formata data de AAAA-MM-DD para DD/MM/AAAA --- */
-  function formatarData(iso) {
-    var p = iso.split('-');
-    return p[2] + '/' + p[1] + '/' + p[0];
-  }
-
-  /* --- Submit --- */
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    limparErros();
-
-    var nome   = inputNome.value.trim();
-    var tel    = inputTel.value.trim();
-    var data   = inputData.value;
-    var hora   = inputHora.value;
-    var valido = true;
-
-    if (!nome) {
-      mostrarErro('erro-nome', 'Por favor, informe seu nome completo.');
-      valido = false;
-    }
-
-    var digitos = tel.replace(/\D/g, '');
-    if (!digitos) {
-      mostrarErro('erro-telefone', 'Por favor, informe seu telefone.');
-      valido = false;
-    } else if (digitos.length < 10 || digitos.length > 11) {
-      mostrarErro('erro-telefone', 'Informe um telefone válido com DDD (10 ou 11 dígitos).');
-      valido = false;
-    }
-
-    if (!data) {
-      mostrarErro('erro-data', 'Por favor, escolha uma data para a reserva.');
-      valido = false;
-    }
-
-    if (!hora) {
-      mostrarErro('erro-horario', 'Por favor, informe o horário desejado.');
-      valido = false;
-    }
-
-    if (!valido) return;
-
-    var mensagem = 'Olá! Gostaria de reservar uma mesa.' +
-                   ' Nome: ' + nome +
-                   ' | Telefone: ' + tel +
-                   ' | Data: ' + formatarData(data) +
-                   ' | Horário: ' + hora;
-
-    var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(mensagem);
-    window.open(url, '_blank', 'noopener,noreferrer');
-  });
-
-})();
-
-/* =============================================
-   WHATSAPP — Link de delivery
+   WHATSAPP — Links de delivery, franquia e contato
    Usa a constante WHATSAPP definida no topo.
 ============================================= */
 (function configurarWhatsApp() {
@@ -234,6 +124,13 @@ const WHATSAPP = "5534999999999"; // ALTERAR AQUI
   /* Botão de delivery da seção Cardápio */
   var btnCardapio = document.getElementById('btn-delivery-cardapio');
   if (btnCardapio) btnCardapio.href = url;
+
+  /* Botão "Quero ser Franqueado", com mensagem pré-preenchida */
+  var btnFranquia = document.getElementById('btn-franquia');
+  if (btnFranquia) {
+    var mensagemFranquia = 'Olá! Tenho interesse em ser um franqueado da Eu Amo Pastel.';
+    btnFranquia.href = url + '?text=' + encodeURIComponent(mensagemFranquia);
+  }
 
   /* Ícone de WhatsApp nas redes sociais */
   var btnRede = document.getElementById('btn-whatsapp-rede');
