@@ -240,7 +240,7 @@ textarea {
 /* Logo da marca — surge no mesmo lugar das palavras, com a mesma animação */
 .banner-logo {
   position: absolute;
-  width: clamp(170px, 36vw, 280px);
+  width: clamp(220px, 46vw, 380px);
   height: auto;
 
   /* Estado inicial: invisível, borrado, deslocado para baixo */
