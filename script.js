@@ -1,4 +1,4 @@
-const WHATSAPP = "5534991973508"; // ALTERAR AQUI
+const WHATSAPP = "553499236-2770"; // ALTERAR AQUI
 
 /* =============================================
    BANNER — ANIMAÇÃO SEQUENCIAL DE PALAVRAS
